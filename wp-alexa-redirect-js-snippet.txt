@@ -1,0 +1,59 @@
+<script type="text/javascript">
+<!--//
+
+/**
+* JavaScript snippet from `Better "Alexa Redirect"` (wp-alexa-redirect)
+*
+* This snippet (from the wp-alexa-redirect plugin) is designed to improve your 
+* Alexa Rating by tunneling all your blog's links with an <em>Alexa Redirect 
+* Link</em> (<code>http://redirect.alexa.com/redirect?</code>an_url_from_your_site).
+* The benefit of this particular plugin over the rest <em>sibling</em> plugins 
+* that state to do the same, is that uses JavaScript to apply the redirects and it 
+* does not mess woth your actual HTML code, so using it will not affect your 
+* Google or other search engines ratings.
+* 
+* @link http://kaloyan.info/blog/better-alexa- redirect-plugin/
+* @author Kaloyan K. Tsvetkov <kaloyan@kaloyan.info>
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*/
+
+window.wp_alexa_redirect_old_onload = window.onload || function(){};
+window.onload = function() {
+	
+	// put all the domains you want to have the alexa-redirect applied to
+	//
+	var wl=['somedomain.com','anotherdomain'];
+	
+	// add your own domain to the list of domains
+	//
+	wl.push(document.location.host);
+	
+	// walk the links
+	//
+	for(var i=0; i<document.links.length; i++) {
+
+		if (navigator.userAgent.indexOf('MSIE 7.0; Windows NT 6.') > -1) {
+			break;
+			}
+
+		var detected = false;
+		for(var j=0; j<wl.length; j++) {
+			if (wl[j] && document.links[i].href.indexOf(wl[j]) > -1) {
+				detected = true;
+				break;
+				}
+			}
+		if (!detected) {
+			continue;
+			}
+		
+		document.links[i].onmousedown = function(){
+			if (this.href.indexOf('http://redirect.alexa.com/redirect?') < 0) {
+				this.href = 'http://redirect.alexa.com/redirect?' + escape(this.href);
+				}
+			}
+		}	
+	window.wp_alexa_redirect_old_onload();
+	}
+//-->
+</script>
