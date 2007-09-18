@@ -4,7 +4,7 @@ Plugin Name: Better "Alexa Redirect"
 Plugin URI: http://kaloyan.info/blog/better-alexa-redirect-plugin/
 Description: This plugin is designed to improve your Alexa Rating by tunneling all your blog's links with an <em>Alexa Redirect Link</em> (<code>http://redirect.alexa.com/redirect?</code>an_url_from_your_site). The benefit of this particular plugin over the rest <em>sibling</em> plugins that state to do the same, is that uses JavaScript to apply the redirects and it does not mess woth your actual HTML code, so using it will not affect your Google or other search engines ratings.
 Author: Kaloyan K. Tsvetkov
-Version: 0.2
+Version: 0.3
 Author URI: http://kaloyan.info/
 */
 
