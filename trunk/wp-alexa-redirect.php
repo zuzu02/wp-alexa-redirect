@@ -71,7 +71,13 @@ Class wp_alexa_redirect {
 		// attach to plugin installation
 		//
 		add_action(
-			'activate_' . __FILE__,
+			'activate_' . str_replace(
+				DIRECTORY_SEPARATOR, '/',
+				str_replace(
+					realpath(ABSPATH . PLUGINDIR) . DIRECTORY_SEPARATOR,
+						'', __FILE__
+					)
+				),
 			array(&$this, 'install')
 			);
 		}
